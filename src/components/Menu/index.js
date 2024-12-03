@@ -5,25 +5,27 @@ import {
   faRotateRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import styles from "./index.module.css";
 
 const Menu = () => {
   return (
     <div>
-      <div>
-        <FontAwesomeIcon icon={faPencil} />
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faPencil} />
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faRotateLeft} />
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faRotateRight} />
-      </div>
-      <div>
-        <FontAwesomeIcon icon={faFileArrowDown} />
+      <div className={styles.menuContainer}>
+        <div className={styles.iconWrapper}>
+          <FontAwesomeIcon icon={faPencil} className={styles.icon} />
+        </div>
+        <div className={styles.iconWrapper}>
+          <FontAwesomeIcon icon={faPencil} className={styles.icon} />
+        </div>
+        <div className={styles.iconWrapper}>
+          <FontAwesomeIcon icon={faRotateLeft} className={styles.icon} />
+        </div>
+        <div className={styles.iconWrapper}>
+          <FontAwesomeIcon icon={faRotateRight} className={styles.icon} />
+        </div>
+        <div className={styles.iconWrapper}>
+          <FontAwesomeIcon icon={faFileArrowDown} className={styles.icon} />
+        </div>
       </div>
     </div>
   );
