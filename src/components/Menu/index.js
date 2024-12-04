@@ -1,4 +1,5 @@
 import {
+  faEraser,
   faFileArrowDown,
   faPencil,
   faRotateLeft,
@@ -14,7 +15,7 @@ const Menu = () => {
         <FontAwesomeIcon icon={faPencil} className={styles.icon} />
       </div>
       <div className={styles.iconWrapper}>
-        <FontAwesomeIcon icon={faPencil} className={styles.icon} />
+        <FontAwesomeIcon icon={faEraser} className={styles.icon} />
       </div>
       <div className={styles.iconWrapper}>
         <FontAwesomeIcon icon={faRotateLeft} className={styles.icon} />
