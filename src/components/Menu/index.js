@@ -7,12 +7,23 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./index.module.css";
+import { menuItemClick, actionItemClick } from "@/slice/menuSlice";
+import { MENU_ITEMS } from "@/constants";
+import { useDispatch } from "react-redux";
 
 const Menu = () => {
+  const dispatch = useDispatch();
+  const handleMenuClick = (itemName) => {
+    dispatch(menuItemClick(itemName));
+  };
   return (
     <div className={styles.menuContainer}>
       <div className={styles.iconWrapper}>
-        <FontAwesomeIcon icon={faPencil} className={styles.icon} />
+        <FontAwesomeIcon
+          onClick={() => handleMenuClick(MENU_ITEMS.PENCIL)}
+          icon={faPencil}
+          className={styles.icon}
+        />
       </div>
       <div className={styles.iconWrapper}>
         <FontAwesomeIcon icon={faEraser} className={styles.icon} />
