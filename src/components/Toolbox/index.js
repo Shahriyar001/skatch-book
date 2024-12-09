@@ -25,26 +25,32 @@ const Toolbox = () => {
             <div
               className={styles.colorBox}
               style={{ backgroundColor: COLORS.BLACK }}
+              onClick={() => updateColor(COLORS.BLACK)}
             />
             <div
               className={styles.colorBox}
               style={{ backgroundColor: COLORS.RED }}
+              onClick={() => updateColor(COLORS.RED)}
             />
             <div
               className={styles.colorBox}
               style={{ backgroundColor: COLORS.GREEN }}
+              onClick={() => updateColor(COLORS.GREEN)}
             />
             <div
               className={styles.colorBox}
               style={{ backgroundColor: COLORS.BLUE }}
+              onClick={() => updateColor(COLORS.BLUE)}
             />
             <div
               className={styles.colorBox}
               style={{ backgroundColor: COLORS.ORANGE }}
+              onClick={() => updateColor(COLORS.ORANGE)}
             />
             <div
               className={styles.colorBox}
               style={{ backgroundColor: COLORS.YELLOW }}
+              onClick={() => updateColor(COLORS.YELLOW)}
             />
           </div>
         </div>

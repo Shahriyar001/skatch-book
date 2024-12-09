@@ -18,7 +18,7 @@ const initialState = {
 export const toolboxSlice = createSlice({
   name: "toolbox",
   initialState,
-  reducer: {
+  reducers: {
     changeColor: (state, action) => {
       state[action.payload.item].color = action.payload.color;
     },
