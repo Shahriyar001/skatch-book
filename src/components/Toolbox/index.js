@@ -1,13 +1,20 @@
-import React from "react";
 import styles from "./index.module.css";
 import { COLORS, MENU_ITEMS } from "@/constants";
-import { useSelector } from "react-redux";
+import { changeBrushSize, changeColor } from "@/slice/toolboxSlice";
+import { useSelector, useDispatch } from "react-redux";
 const Toolbox = () => {
+  const dispatch = useDispatch();
   const activeMenuItem = useSelector((state) => state.menu.activeMenuItem);
   const showStrokeToolOption = activeMenuItem === MENU_ITEMS.PENCIL;
   const showBrushToolOption =
     activeMenuItem === MENU_ITEMS.ERASER || MENU_ITEMS.ERASER;
-  const updateBrushSize = (e) => {};
+  const updateBrushSize = (e) => {
+    dispatch(changeBrushSize({ item: activeMenuItem, size: e.target.value }));
+  };
+
+  const updateColor = (newColor) => {
+    dispatch(changeColor({ item: activeMenuItem, color: newColor }));
+  };
 
   return (
     <div className={styles.toolboxContainer}>

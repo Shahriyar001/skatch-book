@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import menuReducer from "@/slice/menuSlice";
+import MenuReducer from "@/slice/menuSlice";
+import ToolboxReducer from "@/slice/toolboxSlice";
 
 export const store = configureStore({
   reducer: {
-    menu: menuReducer,
+    menu: MenuReducer,
+    toolbox: ToolboxReducer,
   },
 });
