@@ -15,6 +15,10 @@ const Board = () => {
 
     if (actionMenuItem === MENU_ITEMS.DOWNLOAD) {
       const URL = canvas.toDataURL();
+      const anchor = document.createElement("a");
+      anchor.href = URL;
+      anchor.download = "sketch.png";
+      anchor.click();
       console.log(URL);
     }
   }, [actionMenuItem]);
