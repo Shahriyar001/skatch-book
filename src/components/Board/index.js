@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 const Board = () => {
@@ -21,7 +21,7 @@ const Board = () => {
   }, [color, size]);
 
   // mount
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
@@ -30,17 +30,26 @@ const Board = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const handleMouseDown = (e) => {
+    const beginPath = (x, y) => {
       const rect = canvas.getBoundingClientRect();
-      shouldDraw.current = true;
       context.beginPath();
-      context.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+      context.moveTo(x - rect.left, y - rect.top);
+    };
+
+    const drawline = (x, y) => {
+      const rect = canvas.getBoundingClientRect();
+      context.lineTo(x - rect.left, y - rect.top);
+      context.stroke();
+    };
+
+    const handleMouseDown = (e) => {
+      // const rect = canvas.getBoundingClientRect();
+      shouldDraw.current = true;
+      beginPath(e.clientX, e.clientY);
     };
     const handleMouseMove = (e) => {
       if (!shouldDraw.current) return;
-      const rect = canvas.getBoundingClientRect();
-      context.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-      context.stroke();
+      drawline(e.clientX, e.clientY);
     };
     const handleMouseUp = (e) => {
       shouldDraw.current = false;
