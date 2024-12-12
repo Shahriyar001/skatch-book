@@ -3,6 +3,7 @@ import { COLORS, MENU_ITEMS } from "@/constants";
 import { changeBrushSize, changeColor } from "@/slice/toolboxSlice";
 import { useSelector, useDispatch } from "react-redux";
 import cx from "classnames";
+import { socket } from "@/socket";
 
 const Toolbox = () => {
   const dispatch = useDispatch();
@@ -14,14 +15,19 @@ const Toolbox = () => {
 
   const updateBrushSize = (e) => {
     dispatch(changeBrushSize({ item: activeMenuItem, size: e.target.value }));
+    socket.emit("changeConfig", { color, size: e.target.value });
   };
 
   const updateColor = (newColor) => {
     dispatch(changeColor({ item: activeMenuItem, color: newColor }));
+    socket.emit("changeConfig", { color: newColor, size });
   };
 
   return (
     <div className={styles.toolboxContainer}>
+      {/* <div className="text-center mb-2">
+        <h3>SM Design</h3>
+      </div> */}
       {showStrokeToolOption && (
         <div className={styles.toolItem}>
           <h4 className={styles.toolText}>Stroke Color</h4>
@@ -85,6 +91,11 @@ const Toolbox = () => {
           </div>
         </div>
       )}
+      <div className="text-end mt-2">
+        <h5 className="text-sm opacity-45">
+          © {new Date().getFullYear()} Shahriyar Mahbub
+        </h5>
+      </div>
     </div>
   );
 };
