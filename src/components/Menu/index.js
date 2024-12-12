@@ -48,7 +48,7 @@ const Menu = () => {
       </div>
       <div
         className={styles.iconWrapper}
-        onClick={() => handleActionItemClick(MENU_ITEMS.REDU)}
+        onClick={() => handleActionItemClick(MENU_ITEMS.REDO)}
       >
         <FontAwesomeIcon icon={faRotateRight} className={styles.icon} />
       </div>
