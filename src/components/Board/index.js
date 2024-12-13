@@ -46,12 +46,20 @@ const Board = () => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
 
-    const changeConfig = () => {
+    const changeConfig = (color, size) => {
       context.strokeStyle = color;
       context.lineWidth = size;
     };
 
-    changeConfig();
+    const handleChangeConfig = (config) => {
+      changeConfig(config.color, config.size);
+    };
+    changeConfig(color, size);
+    socket.on("changeConfig", handleChangeConfig);
+
+    return () => {
+      socket.off("changeConfig", handleChangeConfig);
+    };
   }, [color, size]);
 
   // mount
