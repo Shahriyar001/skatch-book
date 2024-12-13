@@ -130,3 +130,5 @@ const Board = () => {
 };
 
 export default Board;
+
+// author: shahriyar
